@@ -48,7 +48,7 @@ function NavBar() {
         </a>
       </div>
       <Link
-        href="/dashboard"
+        href="/auth/sign-up"
         className="bg-nblue px-4 py-2 rounded-sm text-white"
       >
         Prueba Gratis
