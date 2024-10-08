@@ -1,14 +1,10 @@
 import { PrismaClient } from '@prisma/client'
 
-let prisma: PrismaClient
+// Create and export the prisma client
+export const prisma = new PrismaClient()
 
-if (process.env.NODE_ENV === 'production') {
-  prisma = new PrismaClient()
-} else {
-  if (!(global as any).prisma) {
-    (global as any).prisma = new PrismaClient()
-  }
-  prisma = (global as any).prisma
+// En desarrollo, guardamos la instancia en la variable global para evitar
+// crear múltiples instancias durante hot-reloading
+if (process.env.NODE_ENV !== 'production') {
+  (global as any).prisma = prisma;
 }
-
-export default prisma
